@@ -7,7 +7,8 @@ import os
 os.chdir('D:')
 os.chdir("!Research Asst")
 
-document = docx.Document('August Logbook 130.docx')
+month=datetime.now().strftime('%B')
+document = docx.Document('%s Logbook 130.docx'%month)
 
 #Changing dates on initial page to current month
 document.tables[0].cell(8,1).text=datetime.datetime.now().strftime('%B')+' '+re.split(' ',document.tables[0].cell(8,1).text)[1]
@@ -36,7 +37,7 @@ document.tables[-1].cell(4,0).text="Supervisor's remarks\n"
 document.tables[-1].cell(5,0).text="Date: %s"%(datetime.datetime.now().strftime('%d/%m/%Y'))
 document.tables[-1].cell(6,0).text="Signature of supervisor:\n"
 
-document.save("August Logbook 130.docx")
+document.save('%s Logbook 130.docx'%month)
 
 print('New entry added successfully.\n')
 input('Press enter to close this window.')
